@@ -13,8 +13,14 @@ print ciphertext
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
-# get frequency of each character in ciphertext  -> use nltk
+# get frequency of each letter in ciphertext  -> use nltk
 
+lettersFrequency = []
+
+for letter in letters :
+    lettersFrequency.append(ciphertext.count(letter))
+
+print lettersFrequency
 
 
 
