@@ -4,9 +4,9 @@
 
 # take cyphertext input
 
-cyphertext = raw_input("Enter a cyphertext to be decrypted :")
+ciphertext = raw_input("Enter a cyphertext to be decrypted :")
 
-print cipherText
+print ciphertext
 
 # letters array
 
@@ -14,7 +14,6 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 
 # get frequency of each character in ciphertext  -> use nltk
-
 
 
 
