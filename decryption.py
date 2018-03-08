@@ -24,7 +24,7 @@ for letter in letters :
 print lettersFrequency
 
 def percentage(count, total):
-    return 100 * count / total
+    return 100 * float(count) / total
 
 print percentage(ciphertext.count('a'), len(ciphertext))
 
