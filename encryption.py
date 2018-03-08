@@ -5,13 +5,13 @@
 
 msg = raw_input("Enter a msg to be encrypted")
 
-print msg
+##print msg
 
 #take shift input
 
 shift = raw_input("Enter shift")
 
-print shift
+##print shift
 
 # letters array
 
@@ -25,11 +25,16 @@ cipherText = ""
 for i in range(0,len(msg)): # loop over all msg characters
 
     index = letters.index(msg[i]) #get index of character in letters
-    print index
+    ##print index
 
     cipherText += letters[index+int(shift)]
 
-    print cipherText
+
+print "cipherText is : "+cipherText
+
+
+####################################################################################
+
 
 
 
