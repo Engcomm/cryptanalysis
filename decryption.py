@@ -1,4 +1,5 @@
 
+import nltk
 
 ####Decryption####
 
@@ -21,6 +22,11 @@ for letter in letters :
     lettersFrequency.append(ciphertext.count(letter))
 
 print lettersFrequency
+
+def percentage(count, total):
+    return 100 * count / total
+
+print percentage(ciphertext.count('a'), len(ciphertext))
 
 
 
