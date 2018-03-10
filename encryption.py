@@ -25,10 +25,20 @@ ciphertext = ""
 
 for i in range(0,len(msg)): # loop over all msg characters
 
-    index = letters.index(msg[i]) #get index of character in letters
-    ##print index
+    if msg[i] == ' ':
+        ciphertext += ' '
 
-    ciphertext += letters[index+int(shift)]
+    elif msg[i] not in letters : # any other character
+        # print the same character
+        ciphertext += msg[i]
+
+    else : # letter
+        index = letters.index(msg[i])  # get index of character in letters
+        ##print index
+
+        ciphertext += letters[index + int(shift)]
+
+
 
 
 print "ciphertext is : " + ciphertext
