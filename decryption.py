@@ -37,7 +37,7 @@ numberOfLettersInCiphertext = len(''.join(ciphertext.split()))
 print  numberOfLettersInCiphertext
 
 for letter in letters:
-    lettersFrequencyPercentages.append(percentage(ciphertext.count(letter), numberOfLettersInCiphertext)))
+    lettersFrequencyPercentages.append(percentage(ciphertext.count(letter), numberOfLettersInCiphertext))
 
 print lettersFrequencyPercentages
 
@@ -48,5 +48,27 @@ standardEnglishLettersFrequenciesPercentages = [7.487792,1.295442,3.544945,3.621
                                                 4.225448,6.653554,0.269036,0.465726,3.569814,3.39121,6.741725,
                                                 7.372491,2.428106,0.262254,6.140351,6.945198,9.852595,
                                                 3.004612,1.157533,1.691083,0.278079, 1.643606, 0.036173]
+
+shiftsCorrelationCoefficients = [] # to store the co-eff of each shift
+
+for shift in range(0,25) : # 26 shifts
+
+    #calculate the coeff for each shift key
+    r = 26 * sum([
+                     (x*y) for (x,y) in zip(standardEnglishLettersFrequenciesPercentages[:] , lettersFrequencyPercentages[:])
+                   ])
+
+
+
+    #add r to shiftsCorrelationCoefficients list
+    shiftsCorrelationCoefficients.append(r)
+
+print "r "
+print r
+
+
+
+
+
 
 
