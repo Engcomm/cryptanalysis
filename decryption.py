@@ -97,6 +97,30 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
 
     shiftsCorrelationCoefficients.append(r)
 
-print "coef "
-print shiftsCorrelationCoefficients.index(max(shiftsCorrelationCoefficients))
+
+shiftKey = shiftsCorrelationCoefficients.index(max(shiftsCorrelationCoefficients))
+print "shiftKey : "
+print shiftKey
 print max(shiftsCorrelationCoefficients)
+
+## Deciphering
+
+plaintext = ""
+
+for i in range(0,len(ciphertext)): # loop over all ciphertext characters
+
+    if ciphertext[i] == ' ':
+        plaintext += ' '
+
+    elif ciphertext[i] not in letters : # any other character
+        # print the same character
+        plaintext += ciphertext[i]
+
+    else :  # letter
+        index = letters.index(ciphertext[i])  # get index of character in letters
+
+        plaintext += letters[index - int(shiftKey)]
+
+
+print "plaintext : " + plaintext
+
