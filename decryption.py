@@ -1,5 +1,7 @@
 
 
+import math
+
 ####Decryption####
 
 # take ciphertext input
@@ -51,23 +53,81 @@ standardEnglishLettersFrequenciesPercentages = [7.487792,1.295442,3.544945,3.621
 
 shiftsCorrelationCoefficients = [] # to store the co-eff of each shift
 
-print shiftsCorrelationCoefficients
 
-for shift in range(0,26) : # 26 shifts .. ( 26 iin range will be ignored )
+
+for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
+
+
+    r = (
+        26 * sum([
+                     (x * y)
+                     for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages)
+                     ])
+    - sum([x for x in standardEnglishLettersFrequenciesPercentages])
+    * sum([y for y in lettersFrequencyPercentages])
+    )/(
+        math.sqrt(
+            26 * sum([math.pow(x , 2) for x in standardEnglishLettersFrequenciesPercentages])
+            - math.pow( sum([x for x in standardEnglishLettersFrequenciesPercentages]) , 2)
+        )
+        *
+        math.sqrt(
+            26 * sum([math.pow(y, 2) for y in lettersFrequencyPercentages])
+            - math.pow(sum([y for y in lettersFrequencyPercentages]), 2)
+        )
+
+    )
+
+    print "r "
+    print r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+    if shift ==0 :
+        end = ''
+    else:
+
+        end = shift  # to end the iteration over letters
 
     #calculate the coeff for each shift key
-    '''r = 26 * sum([
-                     (x*y) for (x,y) in zip(standardEnglishLettersFrequenciesPercentages[:] , lettersFrequencyPercentages[:])
+    r = 26 * sum([
+                     (x*y) for (x,y) in zip(standardEnglishLettersFrequenciesPercentages[:] , lettersFrequencyPercentages[shift:end])
                    ])
-'''
-    r = shift
 
-    print r
+
     #add r to shiftsCorrelationCoefficients list
     shiftsCorrelationCoefficients.append(r)
 
-print "r "
-print r
+
+
+print "shiftsCorrelationCoefficients "
+print shiftsCorrelationCoefficients
+
+'''
 
 
 
