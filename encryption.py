@@ -18,7 +18,7 @@ ciphertext = ""
 
 # encryption
 
-for i in range(0,len(msg)):  # loop over all msg characters
+for i in range(0, len(msg)):  # loop over all msg characters
 
     if msg[i] == ' ':
         ciphertext += ' '
@@ -32,7 +32,7 @@ for i in range(0,len(msg)):  # loop over all msg characters
 
         ciphertext += letters[(index + int(shift)) % 26]
 
-print "ciphertext is : " + ciphertext
+print "\nciphertext is : " + ciphertext
 
 
 

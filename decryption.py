@@ -34,13 +34,8 @@ lettersFrequencyPercentages = [] # to store each letter's frequency percentage
 
 numberOfLettersInCiphertext = len(''.join(ciphertext.split()))
 
-print numberOfLettersInCiphertext
-
 for letter in letters:
     lettersFrequencyPercentages.append(percentage(ciphertext.count(letter), numberOfLettersInCiphertext))
-
-print lettersFrequencyPercentages
-
 
 # The standard frequencies and percentages of English letters
 
@@ -58,10 +53,12 @@ for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
             sum([
                      (x * y)
                      for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[shift:])
+                     #                                               get y from the index as the shift to the last index
                      ])
             + sum([
                      (x * y)
                      for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[0:shift])
+                     #                             get y from the first index to the index before the index as the shift
                      ])
         )
     - sum([x for x in standardEnglishLettersFrequenciesPercentages])
@@ -69,7 +66,7 @@ for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
             sum([y for y in lettersFrequencyPercentages[shift:]]) + sum([y for y in lettersFrequencyPercentages[0:shift]])
     ))/(
         math.sqrt(
-            26 * sum([math.pow(x , 2) for x in standardEnglishLettersFrequenciesPercentages])
+            26 * sum([math.pow(x, 2) for x in standardEnglishLettersFrequenciesPercentages])
             - math.pow(sum([x for x in standardEnglishLettersFrequenciesPercentages]), 2)
         )
         *
@@ -90,13 +87,12 @@ for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
 
     )
 
+    # add this shift's correlation coefficient to the list
     shiftsCorrelationCoefficients.append(r)
 
 
 shiftKey = shiftsCorrelationCoefficients.index(max(shiftsCorrelationCoefficients))
-print "shiftKey : "
-print shiftKey
-print max(shiftsCorrelationCoefficients)
+print " \nshiftKey : " + str(shiftKey)
 
 # Deciphering
 
@@ -117,5 +113,5 @@ for i in range(0, len(ciphertext)):  # loop over all ciphertext characters
         plaintext += letters[index - int(shiftKey)]
 
 
-print "plaintext : " + plaintext
+print " \nplaintext : " + plaintext
 
