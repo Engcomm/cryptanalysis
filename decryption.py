@@ -71,10 +71,8 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
         )
     - sum([x for x in standardEnglishLettersFrequenciesPercentages])
     * (
-            sum([y for y in lettersFrequencyPercentages[shift:]] + sum([y for y in lettersFrequencyPercentages[0:shift]])
-
-        )
-    )/(
+            sum([y for y in lettersFrequencyPercentages[shift:]]) + sum([y for y in lettersFrequencyPercentages[0:shift]])
+    ))/(
         math.sqrt(
             26 * sum([math.pow(x , 2) for x in standardEnglishLettersFrequenciesPercentages])
             - math.pow( sum([x for x in standardEnglishLettersFrequenciesPercentages]) , 2)
@@ -96,4 +94,4 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
         )
 
     )
-    )
+
