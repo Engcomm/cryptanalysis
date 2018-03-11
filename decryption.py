@@ -44,7 +44,9 @@ standardEnglishLettersFrequenciesPercentages = [7.487792, 1.295442, 3.544945, 3.
                                                 7.372491, 2.428106, 0.262254, 6.140351, 6.945198, 9.852595,
                                                 3.004612, 1.157533, 1.691083, 0.278079, 1.643606, 0.036173]
 
-shiftsCorrelationCoefficients = []  # to store the co-eff of each shift
+# calculate correlation coefficient for each possible shift key
+
+shiftsCorrelationCoefficients = []  # to store the co-eff of each shift key
 
 for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
 
@@ -53,12 +55,12 @@ for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
             sum([
                      (x * y)
                      for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[shift:])
-                     #                                               get y from the index as the shift to the last index
+                     #                                             #get y from the index as the shift to the last index
                      ])
             + sum([
                      (x * y)
                      for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[0:shift])
-                     #                             get y from the first index to the index before the index as the shift
+                     #                           #get y from the first index to the index before the index as the shift
                      ])
         )
     - sum([x for x in standardEnglishLettersFrequenciesPercentages])
@@ -91,6 +93,8 @@ for shift in range(0,26):  # 26 shifts .. ( 26 in range will be ignored )
     shiftsCorrelationCoefficients.append(r)
 
 
+# the shift key is the key with the max value
+
 shiftKey = shiftsCorrelationCoefficients.index(max(shiftsCorrelationCoefficients))
 print " \nshiftKey : " + str(shiftKey)
 
@@ -100,10 +104,11 @@ plaintext = ""
 
 for i in range(0, len(ciphertext)):  # loop over all ciphertext characters
 
-    if ciphertext[i] == ' ':
+    if ciphertext[i] == ' ':  # space
         plaintext += ' '
 
-    elif ciphertext[i] not in letters:  # any other character
+    elif ciphertext[i] not in letters:  # any character other than letters and spaces
+
         # print the same character
         plaintext += ciphertext[i]
 
