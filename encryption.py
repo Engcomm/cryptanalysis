@@ -1,17 +1,13 @@
 
-#### Encryption ####
+# ### Encryption ### #
 
-#take msg input
+# take msg input
 
 msg = raw_input("Enter a msg to be encrypted : ")
 
-##print msg
-
-#take shift input
+# take shift input
 
 shift = raw_input("Enter shift : ")
-
-##print shift
 
 # letters array
 
@@ -20,34 +16,23 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 ciphertext = ""
 
-
 # encryption
 
-for i in range(0,len(msg)): # loop over all msg characters
+for i in range(0,len(msg)):  # loop over all msg characters
 
     if msg[i] == ' ':
         ciphertext += ' '
 
-    elif msg[i] not in letters : # any other character
+    elif msg[i] not in letters:  # any other character
         # print the same character
         ciphertext += msg[i]
 
-    else : # letter
+    else:  # letter
         index = letters.index(msg[i])  # get index of character in letters
-        ##print index
 
-        ciphertext += letters[(index + int(shift)) % 26 ]
-
-
-
+        ciphertext += letters[(index + int(shift)) % 26]
 
 print "ciphertext is : " + ciphertext
-
-
-####################################################################################
-
-
-
 
 
 
