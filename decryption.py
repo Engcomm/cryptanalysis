@@ -51,15 +51,18 @@ standardEnglishLettersFrequenciesPercentages = [7.487792,1.295442,3.544945,3.621
 
 shiftsCorrelationCoefficients = [] # to store the co-eff of each shift
 
-for shift in range(0,25) : # 26 shifts
+print shiftsCorrelationCoefficients
+
+for shift in range(0,26) : # 26 shifts .. ( 26 iin range will be ignored )
 
     #calculate the coeff for each shift key
-    r = 26 * sum([
+    '''r = 26 * sum([
                      (x*y) for (x,y) in zip(standardEnglishLettersFrequenciesPercentages[:] , lettersFrequencyPercentages[:])
                    ])
+'''
+    r = shift
 
-
-
+    print r
     #add r to shiftsCorrelationCoefficients list
     shiftsCorrelationCoefficients.append(r)
 
