@@ -95,3 +95,8 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
 
     )
 
+    shiftsCorrelationCoefficients.append(r)
+
+print "coef "
+print shiftsCorrelationCoefficients.index(max(shiftsCorrelationCoefficients))
+print max(shiftsCorrelationCoefficients)

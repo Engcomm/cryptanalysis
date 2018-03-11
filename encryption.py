@@ -36,7 +36,7 @@ for i in range(0,len(msg)): # loop over all msg characters
         index = letters.index(msg[i])  # get index of character in letters
         ##print index
 
-        ciphertext += letters[index + int(shift)]
+        ciphertext += letters[(index + int(shift)) % 26 ]
 
 
 
