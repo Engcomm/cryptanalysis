@@ -59,12 +59,21 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
 
 
     r = (
-        26 * sum([
+        26 * (
+            sum([
                      (x * y)
-                     for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages)
+                     for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[shift:])
                      ])
+            + sum([
+                     (x * y)
+                     for (x, y) in zip(standardEnglishLettersFrequenciesPercentages, lettersFrequencyPercentages[0:shift])
+                     ])
+        )
     - sum([x for x in standardEnglishLettersFrequenciesPercentages])
-    * sum([y for y in lettersFrequencyPercentages])
+    * (
+            sum([y for y in lettersFrequencyPercentages[shift:]] + sum([y for y in lettersFrequencyPercentages[0:shift]])
+
+        )
     )/(
         math.sqrt(
             26 * sum([math.pow(x , 2) for x in standardEnglishLettersFrequenciesPercentages])
@@ -72,66 +81,19 @@ for shift in range(0,26) : # 26 shifts .. ( 26 in range will be ignored )
         )
         *
         math.sqrt(
-            26 * sum([math.pow(y, 2) for y in lettersFrequencyPercentages])
-            - math.pow(sum([y for y in lettersFrequencyPercentages]), 2)
+            26 * (
+                sum([math.pow(y, 2) for y in lettersFrequencyPercentages[shift :]])
+                + sum([math.pow(y, 2) for y in lettersFrequencyPercentages[0:shift]])
+
+            )
+            - math.pow(
+                (
+                    sum([y for y in lettersFrequencyPercentages[shift:]])
+                    + sum([y for y in lettersFrequencyPercentages[0:shift]])
+
+                ), 2
+            )
         )
 
     )
-
-    print "r "
-    print r
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-    if shift ==0 :
-        end = ''
-    else:
-
-        end = shift  # to end the iteration over letters
-
-    #calculate the coeff for each shift key
-    r = 26 * sum([
-                     (x*y) for (x,y) in zip(standardEnglishLettersFrequenciesPercentages[:] , lettersFrequencyPercentages[shift:end])
-                   ])
-
-
-    #add r to shiftsCorrelationCoefficients list
-    shiftsCorrelationCoefficients.append(r)
-
-
-
-print "shiftsCorrelationCoefficients "
-print shiftsCorrelationCoefficients
-
-'''
-
-
-
-
-
-
-
+    )
