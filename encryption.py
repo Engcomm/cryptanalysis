@@ -7,7 +7,7 @@ msg = raw_input("Enter a msg to be encrypted : ")
 
 # take shift input
 
-shift = raw_input("Enter shift : ")
+shift = raw_input("Enter a shift key : ")
 
 # letters array
 
