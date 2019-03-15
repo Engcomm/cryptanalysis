@@ -30,9 +30,7 @@ lettersFrequencyPercentages = [] # to store each letter's frequency percentage
 
 # calculate each letter's frequency percentage
 
-
-#delete spaces from ciphertext
-numberOfLettersInCiphertext = len(lettersOnlyCiphertext) ############## apply on ciphertext without special characters instead
+numberOfLettersInCiphertext = len(lettersOnlyCiphertext)
 
 for letter in letters:
     lettersFrequencyPercentages.append(percentage(lettersOnlyCiphertext.count(letter), numberOfLettersInCiphertext))
