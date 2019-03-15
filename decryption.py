@@ -3,7 +3,6 @@
 
 import math
 
-
 # take ciphertext input
 
 ciphertext = raw_input("Enter a ciphertext to be decrypted : ")
@@ -13,16 +12,15 @@ ciphertext = raw_input("Enter a ciphertext to be decrypted : ")
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
            't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# get frequency of each letter in ciphertext
+# ciphertext without special characters, numbers and spaces
 
-lettersFrequency = []  # to store each letter frequency in ciphertext
+lettersOnlyCiphertext = '' # to be the input to count each letter frequency
 
-# calculate each letter frequency
-for letter in letters:
-    lettersFrequency.append(ciphertext.count(letter))
+for character in ciphertext:
+    if character in letters:
+	lettersOnlyCiphertext += character
 
 # define function to calculate each letter's frequency percentage
-
 
 def percentage(count, total):
 
@@ -32,10 +30,12 @@ lettersFrequencyPercentages = [] # to store each letter's frequency percentage
 
 # calculate each letter's frequency percentage
 
-numberOfLettersInCiphertext = len(''.join(ciphertext.split()))
+
+#delete spaces from ciphertext
+numberOfLettersInCiphertext = len(lettersOnlyCiphertext) ############## apply on ciphertext without special characters instead
 
 for letter in letters:
-    lettersFrequencyPercentages.append(percentage(ciphertext.count(letter), numberOfLettersInCiphertext))
+    lettersFrequencyPercentages.append(percentage(lettersOnlyCiphertext.count(letter), numberOfLettersInCiphertext))
 
 # The standard frequencies and percentages of English letters
 
@@ -117,6 +117,6 @@ for i in range(0, len(ciphertext)):  # loop over all ciphertext characters
 
         plaintext += letters[index - int(shiftKey)]
 
-
+# print the result
 print " \nplaintext : " + plaintext
 
